@@ -1,14 +1,12 @@
 package ch.hevs.businessobject;
 
-import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,8 +22,56 @@ public class OrderDetails {
 	
 	//relations
 	@ManyToOne
+	@JoinColumn(name = "FK_commande")
 	private Order order;
 	
-	@ManyToMany
-	private Set <Product> products;
+	@ManyToOne
+	@JoinColumn(name = "FK_produit")
+	private Product product;
+
+	//id
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	//quantity
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	//order
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	//products
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	
+	public OrderDetails() {
+	}
+
+	public OrderDetails(int quantity) {
+		this.quantity = quantity;
+	}
+	
+	
+	
 }
