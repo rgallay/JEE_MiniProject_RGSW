@@ -1,6 +1,5 @@
 package ch.hevs.businessobject;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,25 +10,25 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="DetailCommande")
+@Table(name = "DetailCommande")
 public class OrderDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	@Column(name="quantite")
+	@Column(name = "quantite")
 	private int quantity;
-	
-	//relations
+
+	// relations
 	@ManyToOne
 	@JoinColumn(name = "FK_commande")
 	private Order order;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "FK_produit")
 	private Product product;
 
-	//id
+	// id
 	public Long getId() {
 		return id;
 	}
@@ -38,7 +37,7 @@ public class OrderDetails {
 		this.id = id;
 	}
 
-	//quantity
+	// quantity
 	public int getQuantity() {
 		return quantity;
 	}
@@ -47,7 +46,7 @@ public class OrderDetails {
 		this.quantity = quantity;
 	}
 
-	//order
+	// order
 	public Order getOrder() {
 		return order;
 	}
@@ -56,7 +55,7 @@ public class OrderDetails {
 		this.order = order;
 	}
 
-	//products
+	// products
 	public Product getProduct() {
 		return product;
 	}
@@ -64,14 +63,12 @@ public class OrderDetails {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	
+
 	public OrderDetails() {
 	}
 
 	public OrderDetails(int quantity) {
 		this.quantity = quantity;
 	}
-	
-	
-	
+
 }

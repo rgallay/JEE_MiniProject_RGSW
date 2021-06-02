@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+    <ui:define name="content">
+    	<h:form>
+        	<h:outputLabel value="Order Information"></h:outputLabel>
+        	<br></br>
+        	<h:panelGrid columns="5">
+        	
+        	<h:outputText value="#{orderBean.productSize}"></h:outputText>
+        	
+        	
+        	
+        		<h:outputText value="customer: "></h:outputText>
+        		
+    
+	        	<h:selectOneMenu value="#{orderBean.customer}">
+	        		<f:selectItems value="#{orderBean.customers}" var="customer" itemValue="#{customer}" itemLabel="#{customer.name}"/>
+	        	</h:selectOneMenu>
+	        	
+	        	<h:outputText value="products: "></h:outputText>
+	        	
+	        	<h:selectManyCheckbox value="#{orderBean.product}">
+	        		<f:selectItems value="#{orderBean.products}" var="product" itemValue="#{product}" itemLabel="#{product.product}"/>
+	        	</h:selectManyCheckbox>
+	        	
+	        	<h:selectManyCheckbox value="#{orderBean.selectedProducts}">
+	        		<f:selectItems value="#{orderBean.products}" var="product" itemValue="#{product}" itemLabel="#{product.product}"/>
+	        	</h:selectManyCheckbox>
+	        	
+	        	<h:outputLabel for="street">Street</h:outputLabel>
+	        	<h:inputText id="street" value="#{orderBean.street}" />
+	        	
+	        	<h:outputLabel for="postalCode">Postal Code</h:outputLabel>
+	        	<h:inputText id="postalCode" value="#{orderBean.postalCode}" />
+	        	
+	        	<h:outputLabel for="city">City</h:outputLabel>
+	        	<h:inputText id="city" value="#{orderBean.city}" />
+	        	
+	        	
+	        	
+        	</h:panelGrid>
+     		<h:commandButton value="transfer" action="#{transferBean.performTransfer}"></h:commandButton>
+       
+        </h:form>
+    </ui:define>
+</ui:composition>
+</html>

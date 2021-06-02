@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#welcomeBank.xhtml" PATH="/welcomeBank.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#welcomeBank.xhtml:0" NAME="item"
+   PATH="/welcomeBank.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="orderForm::#orderForm.xhtml" NAME="output"
+    PATH="/orderForm.xhtml" TARGET="rules:#orderForm.xhtml"
+    TITLE="orderForm" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#orderForm.xhtml" PATH="/orderForm.xhtml"
+  SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

@@ -16,30 +16,28 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Commande")
+@Table(name = "Commande")
 public class Order {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	@Column(name="date")
+	@Column(name = "date")
 	private Date date;
-	
+
 	@Embedded
 	@Column(name = "addresse")
 	private Address address;
-	
-	//relations
+
+	// relations
 	@ManyToOne
 	@JoinColumn(name = "FK_client")
 	private Customer customer;
-	
-	@OneToMany(mappedBy="order", cascade = CascadeType.ALL)
+
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	private Set<OrderDetails> orderDetails;
-	
 
-
-	//id
+	// id
 	public Long getId() {
 		return id;
 	}
@@ -48,7 +46,7 @@ public class Order {
 		this.id = id;
 	}
 
-	//date
+	// date
 	public Date getDate() {
 		return date;
 	}
@@ -57,7 +55,7 @@ public class Order {
 		this.date = date;
 	}
 
-	//customer
+	// customer
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -66,7 +64,7 @@ public class Order {
 		this.customer = customer;
 	}
 
-	//orderDetails
+	// orderDetails
 	public Set<OrderDetails> getOrderDetails() {
 		return orderDetails;
 	}
@@ -75,7 +73,7 @@ public class Order {
 		this.orderDetails = orderDetails;
 	}
 
-	//address
+	// address
 	public Address getAddress() {
 		return address;
 	}
@@ -83,8 +81,8 @@ public class Order {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	
-	//constructors
+
+	// constructors
 	public Order() {
 	}
 
@@ -92,6 +90,5 @@ public class Order {
 		this.date = date;
 		this.customer = customer;
 	}
-	
-	
+
 }

@@ -12,26 +12,26 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Client")
+@Table(name = "Client")
 public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
-	@Column(name="nom")
+	@Column(name = "nom")
 	private String name;
-	@Column(name="prenom")
+	@Column(name = "prenom")
 	private String firstname;
-	@Column(name="email")
+	@Column(name = "email")
 	private String email;
-	@Column(name="password")
+	@Column(name = "password")
 	private String password;
-	
-	//relations
-	@OneToMany(mappedBy="customer" , cascade = CascadeType.ALL)
+
+	// relations
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private Set<Order> orders;
 
-	//id
+	// id
 	public Long getId() {
 		return id;
 	}
@@ -40,7 +40,7 @@ public class Customer {
 		this.id = id;
 	}
 
-	//name
+	// name
 	public String getName() {
 		return name;
 	}
@@ -49,7 +49,7 @@ public class Customer {
 		this.name = name;
 	}
 
-	//firstname
+	// firstname
 	public String getFirstname() {
 		return firstname;
 	}
@@ -58,7 +58,7 @@ public class Customer {
 		this.firstname = firstname;
 	}
 
-	//email
+	// email
 	public String getEmail() {
 		return email;
 	}
@@ -67,7 +67,7 @@ public class Customer {
 		this.email = email;
 	}
 
-	//password
+	// password
 	public String getPassword() {
 		return password;
 	}
@@ -76,7 +76,7 @@ public class Customer {
 		this.password = password;
 	}
 
-	//orders
+	// orders
 	public Set<Order> getOrders() {
 		return orders;
 	}
@@ -84,18 +84,16 @@ public class Customer {
 	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
-	
-	//constructors
+
+	// constructors
 	public Customer() {
 	}
+
 	public Customer(String name, String firstname, String email, String password) {
 		this.name = name;
 		this.firstname = firstname;
 		this.email = email;
 		this.password = password;
 	}
-	
-	
-	
-	
+
 }
