@@ -31,7 +31,7 @@ public class ShopBean implements Shop {
 	@Override
 	public List<Order> getOrdersByCustomer(long idCustomer) {
 
-		return em.createQuery("FROM Order o WHERE o.id = :id").setParameter("id", idCustomer).getResultList();
+		return em.createQuery("FROM Order o WHERE o.customer.id = :id").setParameter("id", idCustomer).getResultList();
 	}
 
 	@Override

@@ -2,51 +2,82 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
-    <ui:define name="content">
-    	<h:form>
-        	<h:outputLabel value="Order Information"></h:outputLabel>
-        	<br></br>
-        	<h:panelGrid columns="5">
-        	
-        	<h:outputText value="#{orderBean.productSize}"></h:outputText>
-        	
-        	
-        	
-        		<h:outputText value="customer: "></h:outputText>
-        		
-    
-	        	<h:selectOneMenu value="#{orderBean.customerId}">
-	        		<f:selectItems value="#{orderBean.customers}" var="customer" itemValue="#{customer.id}" itemLabel="#{customer.name}"/>
-	        	</h:selectOneMenu>
-	        	
-	        	<h:outputText value="products: "></h:outputText>
-	        	
-	        	
-	        	<h:selectManyCheckbox value="#{orderBean.selectedProductsId}">
-	        		<f:selectItems value="#{orderBean.products}" var="product" itemValue="#{product.id}" itemLabel="#{product.product}"/>
-	        	</h:selectManyCheckbox>
-	        	
-	        	
-	        	<h:outputLabel for="street">Street</h:outputLabel>
-	        	<h:inputText id="street" value="#{orderBean.street}" />
-	        	
-	        	<h:outputLabel for="postalCode">Postal Code</h:outputLabel>
-	        	<h:inputText id="postalCode" value="#{orderBean.postalCode}" />
-	        	
-	        	<h:outputLabel for="city">City</h:outputLabel>
-	        	<h:inputText id="city" value="#{orderBean.city}" />
-	        	
-	        	
-	        	
-        	</h:panelGrid>
-     		<h:commandButton value="transfer" action="#{orderBean.performOrder}"></h:commandButton>
-       
-        </h:form>
-    </ui:define>
+	<ui:define name="content">
+		<h:form>
+			<fieldset>
+				<legend>Purchase order</legend>
+
+				<div class="row responsive-label">
+					<div class="col-sm-12 col-md-3">
+						<h:outputLabel value="Customer"></h:outputLabel>
+					</div>
+
+					<div class="col-sm-12 col-md">
+						<h:selectOneMenu required="true" value="#{orderBean.customerId}">
+							<f:selectItems value="#{orderBean.customers}" var="customer"
+								itemValue="#{customer.id}"
+								itemLabel="#{customer.name} #{customer.firstname}" />
+						</h:selectOneMenu>
+					</div>
+
+				</div>
+
+				<div class="input-group fluid">
+
+					<div class="col-sm-12 col-md-3">
+						<h:outputLabel for="street">Street</h:outputLabel>
+					</div>
+
+					<div class="col-sm-12 col-md">
+						<h:inputText required="true" validatorMessage="Please fill the field" id="street" value="#{orderBean.street}" />
+					</div>
+				</div>
+
+
+				<div class="input-group fluid">
+
+					<div class="col-sm-12 col-md-3">
+						<h:outputLabel for="postalCode">Postal Code</h:outputLabel>
+
+					</div>
+
+					<div class="col-sm-12 col-md">
+						<h:inputText required="true" id="postalCode" value="#{orderBean.postalCode}" />
+					</div>
+				</div>
+
+
+				<div class="input-group fluid">
+
+					<div class="col-sm-12 col-md-3">
+						<h:outputLabel for="city">City</h:outputLabel>
+					</div>
+
+					<div class="col-sm-12 col-md">
+						<h:inputText required="true" id="city" value="#{orderBean.city}" />
+					</div>
+				</div>
+				<div class="input-group fluid">
+					<div class="col-sm-12 col-md-3">
+						<h:outputLabel value="Products"></h:outputLabel>
+					</div>
+					<div class="col-sm-12 col-md">
+						<h:selectManyCheckbox required="true" value="#{orderBean.selectedProductsId}">
+							<div>
+							<f:selectItems value="#{orderBean.products}" var="product"
+								itemValue="#{product.id}" itemLabel="#{product.product} - (CHF #{product.price})" />
+								</div>
+						</h:selectManyCheckbox>
+					</div>
+				</div>
+			</fieldset>
+			<h:commandButton value="Place order" action="#{orderBean.performOrder}"></h:commandButton>
+		</h:form>
+	</ui:define>
 </ui:composition>
 </html>

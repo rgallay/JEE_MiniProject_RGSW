@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<table>
+			<thead>
+				<tr>
+					<th>Num de commande</th>
+					<th>Adresse de livraison</th>
+					<th>Date de commande</th>
+				</tr>
+			</thead>
+			<tbody>
+				<ui:repeat value="#{orderBean.ordersByCustomer}" var="order">
+					<tr>
+						<td>#{order.id}</td>
+						<td>#{order.address}</td>
+						<td>#{order.date}</td>
+					</tr>
+				</ui:repeat>
+			</tbody>
+		</table>
+	</ui:define>
+</ui:composition>
+</html>

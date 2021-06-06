@@ -10,11 +10,19 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>
-		<display-name>welcomeBank.xhtml</display-name>
-		<from-view-id>/welcomeBank.xhtml</from-view-id>
+		<display-name>welcomeShop.xhtml</display-name>
+		<from-view-id>/welcomeShop.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>orderForm</from-outcome>
 			<to-view-id>/orderForm.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+		<navigation-rule>
+		<display-name>welcomeShop.xhtml</display-name>
+		<from-view-id>/welcomeShop.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>#{orderBean.showHistory}</from-outcome>
+			<to-view-id>/showHistory.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 		<navigation-rule>

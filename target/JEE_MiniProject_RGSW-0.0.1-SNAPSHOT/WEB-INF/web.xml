@@ -39,5 +39,5 @@
     <env-entry-type>java.lang.String</env-entry-type>
     <env-entry-value>am9kZXRlcHV0b2hhY2tlcg==</env-entry-value>
   </env-entry>
-  <display-name>TP12-WEB-EJB-PC-EPC-DAO-E</display-name>
+  <display-name>JEE_Shopping_RGSW</display-name>
 </web-app>

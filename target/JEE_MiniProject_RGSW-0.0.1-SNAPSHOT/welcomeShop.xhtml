@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h1>
+			Welcome<small>Make a new order or access the history</small>
+		</h1>
+
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-sm-6">
+					<h4>
+						Make an order<small>Place a new order</small>
+					</h4>
+
+					<h:form>
+						<h:commandButton value="Start new order" action="orderForm"></h:commandButton>
+					</h:form>
+				</div>
+
+				<div class="col-sm-6">
+					<h4>
+						Show history<small>Select one customer and access the
+							history of orders</small>
+					</h4>
+					<h:form>
+						<h:selectOneMenu value="#{orderBean.customerId}">
+							<f:selectItems value="#{orderBean.customers}" var="customer"
+								itemValue="#{customer.id}" itemLabel="#{customer.name}" />
+						</h:selectOneMenu>
+						<h:commandButton value="Show history" action="#{orderBean.showHistory}"></h:commandButton>
+					</h:form>
+				</div>
+			</div>
+
+		</div>
+
+
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -45,4 +45,11 @@ public class Address {
 		this.street = street;
 		this.city = city;
 	}
+
+	@Override
+	public String toString() {
+		return street+", "+postalCode+" "+city;
+	}
+	
+	
 }
