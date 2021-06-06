@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
@@ -34,22 +35,36 @@ public class ShopBean implements Shop {
 	}
 
 	@Override
-	public Order addOrder(Customer customer, Address address, Date date) {
+	@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
+	public Order addOrder(Customer customer, Address address, Date date, List<Product> products) {
 
 		Order order = new Order();
 
 		order.setCustomer(customer);
 		order.setAddress(address);
-		order.setDate(new Date());
+		order.setDate(date);
 
 		em.persist(order);
+		
+		for(int i=0;i<products.size();i++) {
+			addOrderDetails(order,products.get(i),1);
+		}
 		return order;
 	}
 
 	@Override
 	public OrderDetails addOrderDetails(Order order, Product product, int quantity) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		OrderDetails orderDetails = new OrderDetails();
+
+		orderDetails.setOrder(order);
+		orderDetails.setProduct(product);
+		orderDetails.setQuantity(quantity);
+		
+		em.persist(orderDetails);
+		
+		
+		return orderDetails;
 	}
 
 	@Override
@@ -71,9 +86,17 @@ public class ShopBean implements Shop {
 				.getSingleResult();
 
 	}
+	
+	@Override
+	public Product getProduct(long idProduct) {
+
+		return (Product) em.createQuery("FROM Product p where p.id=:id").setParameter("id", idProduct)
+				.getSingleResult();
+
+	}
 
 	@Override
-	public Address addAddress(String postalCode, String street, String city) {
+	public Address createAddress(String postalCode, String street, String city) {
 
 		Address address = new Address();
 		address.setCodePostal(postalCode);

@@ -20,19 +20,17 @@
         		<h:outputText value="customer: "></h:outputText>
         		
     
-	        	<h:selectOneMenu value="#{orderBean.customer}">
-	        		<f:selectItems value="#{orderBean.customers}" var="customer" itemValue="#{customer}" itemLabel="#{customer.name}"/>
+	        	<h:selectOneMenu value="#{orderBean.customerId}">
+	        		<f:selectItems value="#{orderBean.customers}" var="customer" itemValue="#{customer.id}" itemLabel="#{customer.name}"/>
 	        	</h:selectOneMenu>
 	        	
 	        	<h:outputText value="products: "></h:outputText>
 	        	
-	        	<h:selectManyCheckbox value="#{orderBean.product}">
-	        		<f:selectItems value="#{orderBean.products}" var="product" itemValue="#{product}" itemLabel="#{product.product}"/>
+	        	
+	        	<h:selectManyCheckbox value="#{orderBean.selectedProductsId}">
+	        		<f:selectItems value="#{orderBean.products}" var="product" itemValue="#{product.id}" itemLabel="#{product.product}"/>
 	        	</h:selectManyCheckbox>
 	        	
-	        	<h:selectManyCheckbox value="#{orderBean.selectedProducts}">
-	        		<f:selectItems value="#{orderBean.products}" var="product" itemValue="#{product}" itemLabel="#{product.product}"/>
-	        	</h:selectManyCheckbox>
 	        	
 	        	<h:outputLabel for="street">Street</h:outputLabel>
 	        	<h:inputText id="street" value="#{orderBean.street}" />
@@ -46,7 +44,7 @@
 	        	
 	        	
         	</h:panelGrid>
-     		<h:commandButton value="transfer" action="#{transferBean.performTransfer}"></h:commandButton>
+     		<h:commandButton value="transfer" action="#{orderBean.performOrder}"></h:commandButton>
        
         </h:form>
     </ui:define>

@@ -10,5 +10,15 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#orderForm.xhtml" PATH="/orderForm.xhtml"
-  SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+  SHAPE="256,177,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#orderForm.xhtml:0" NAME="item"
+   PATH="/orderForm.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="#{orderBean.performOrder}::#showOrderResult.xhtml" NAME="output"
+    PATH="/showOrderResult.xhtml" TARGET="rules:#showOrderResult.xhtml"
+    TITLE="#{orderBean.performOrder}" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#showOrderResult.xhtml"
+  PATH="/showOrderResult.xhtml" SHAPE="448,129,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

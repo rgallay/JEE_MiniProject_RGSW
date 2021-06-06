@@ -18,15 +18,17 @@ public interface Shop {
 
 	List<Order> getOrdersByCustomer(long idCustomer);
 
-	Order addOrder(Customer customer, Address address, Date date);
+	Order addOrder(Customer customer, Address address, Date date, List<Product> products);
 
 	OrderDetails addOrderDetails(Order order, Product product, int quantity);
 
-	Address addAddress(String postalCode, String street, String city);
+	Address createAddress(String postalCode, String street, String city);
 
 	List<Customer> getCustomers();
 
 	List<Product> getProducts();
+	
+	Product getProduct(long idProduct);
 
 	Customer getCustomer(long idCustomer);
 
